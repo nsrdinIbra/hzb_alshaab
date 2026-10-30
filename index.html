@@ -16,7 +16,6 @@
     <nav class="navbar">
         <ul>
             <li><a class="nav-link active" data-target="home">الرئيسية</a></li>
-            <li><a class="nav-link" data-target="party-statements">آخر البيانات للحزب</a></li>
             <li><a class="nav-link" data-target="news">آخر الأخبار</a></li>
             <li><a class="nav-link" data-target="economy">الاقتصاد ومعاش الناس</a></li>
             <li><a class="nav-link" data-target="about">اقرأ عنا وانضم الينا</a></li>
@@ -26,50 +25,45 @@
     <img src="BR.jpeg" height="240" id="img1" alt="شعار الحزب">
 
     <main>
-        <!-- 1. قسم الرئيسية -->
+        <!-- 1. قسم الرئيسية (يحتوي على الترحيب وآخر البيانات مع صندوق التعليقات) -->
         <section id="home" class="page-section active-section">
             <h2>مرحباً بكم في الموقع الرسمي</h2>
             <p>أهلاً بكم في البوابة الرسمية لحزب الشعب السوداني.</p>
 
             <div class="statement-card">
-                <h3>📢 التزامنا الوطني</h3>
+                <h3>📢 آخر بيانات حزب الشعب السوداني</h3>
+                <div class="date">📅 تاريخ النشر: 29 أكتوبر 2026</div>
                 <p>
-                    يؤكد حزب الشعب السوداني على أولوية تحسين الأوضاع المعيشية ودعم الخدمات الأساسية لكافة المواطنين، مشدداً على ضرورة تكاتف الجهود الوطنية والمجتمعية لتجاوز التحديات الراهنة.
+                    يؤكد حزب الشعب السوداني في بيانه الصحفي الأخير على أولوية تحسين الأوضاع المعيشية ودعم الخدمات الأساسية لكافة المواطنين، مشدداً على ضرورة تكاتف الجهود الوطنية والمجتمعية لتجاوز التحديات الراهنة وبناء مستقبل مستقر يضمن الكرامة والتنمية للجميع.
                 </p>
-            </div>
-        </section>
 
-        <!-- 2. قسم آخر البيانات للحزب (القسم الجديد) -->
-        <section id="party-statements" class="page-section">
-            <h2>آخر البيانات والمواقف الرسمية للترس والعمل الوطني</h2>
-            <div id="statements-container"></div>
-            
-            <!-- حاوية التعليقات الديناميكية المرتبطة بالبيان النشط -->
-            <div class="comments-wrapper" id="comments-wrapper" style="display:none;">
-                <h3 class="comments-title">💬 مناقشات الزوار حول هذا البيان</h3>
-                <div id="cusdis_thread" 
-                     data-host="https://cusdis.com"
-                     data-app-id="ضع_هنا_الـ_APP_ID_الخاص_بك"
-                     data-page-id="" 
-                     data-page-url="" 
-                     data-page-title="">
+                <!-- صندوق تعليقات مدمج هندسياً بدون التأثير على الأزرار -->
+                <div class="comments-section">
+                    <h4>💬 آراء وتعليقات الزوار حول البيان</h4>
+                    <div id="cusdis_thread"
+                      data-host="https://cusdis.com"
+                      data-app-id="ضع_هنا_الـ_APP_ID_الخاص_بك"
+                      data-page-id="statement_29_oct_2026"
+                      data-page-url="https://yourwebsite.com"
+                      data-page-title="بيان حزب الشعب السوداني - 29 أكتوبر">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. قسم آخر الأخبار -->
+        <!-- 2. قسم آخر الأخبار (الديناميكي المخصص لك) -->
         <section id="news" class="page-section">
             <h2>آخر الأخبار والتحديثات اليومية</h2>
             <div id="news-container"></div>
         </section>
 
-        <!-- 4. قسم الاقتصاد -->
+        <!-- 3. قسم الاقتصاد -->
         <section id="economy" class="page-section">
             <h2>الاقتصاد ومعاش الناس</h2>
             <p>رؤية الحزب لحل الأزمات الاقتصادية وتخفيف الأعباء المعيشية عن كاهل المواطن.</p>
         </section>
 
-        <!-- 5. قسم اقرأ عنا وانضم إلينا -->
+        <!-- 4. قسم اقرأ عنا وانضم إلينا -->
         <section id="about" class="page-section">
             <h2>اقرأ عنا وانضم إلينا</h2>
             <p>تعرف على برامجنا، نبذة التأسيس، وكن جزءاً من التغيير الإيجابي.</p>
@@ -97,17 +91,17 @@
         <p>جميع حقوق النشر محفوظة © حزب الشعب السوداني</p>
     </footer>
 
-    <!-- مكتبة نظام تعليقات Cusdis وترجمته للعربية -->
+    <!-- سكريبت تشغيل نظام تعليقات Cusdis وترجمته للعربية -->
     <script async defer src="https://cusdis.com"></script>
     <script>
       window.CUSDIS_LOCALE = {
         "powered_by": "نظام تعليقات %s",
         "post_comment": "إرسال التعليق",
-        "placeholder": "اكتب تعليقك هنا (الاسم والإيميل مطلوبان)...",
+        "placeholder": "اكتب تعليقك ورأيك هنا...",
         "loading": "جاري تحميل التعليقات...",
         "name": "الاسم الكامل",
-        "email": "البريد الإلكتروني (لن ينشر)",
-        "empty_comment": "لا يمكن إرسال تعليق فارغ",
+        "email": "البريد الإلكتروني (لن ينشر علناً)",
+        "empty_comment": "تنبيه: لا يمكن إرسال تعليق فارغ",
         "reply": "رد"
       }
     </script>
