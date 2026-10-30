@@ -1,41 +1,160 @@
-/* تنسيق كروت الأخبار والبيانات الديناميكية */
-.news-card, .statement-item-card {
-    background: #ffffff; 
+/* إعدادات عامة */
+* { 
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: rgb(198, 139, 57); 
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    padding: 0; 
+    direction: rtl;
+}
+
+header { 
+    background-color: rgba(255, 255, 255, 0.1); 
+    padding: 10px; 
+}
+
+h1 { 
+    text-align: center; 
+    color: rgb(15, 10, 85); 
+    font-weight: bold; 
+    text-shadow: 1px 2px rgb(20, 13, 69); 
+}
+
+p { 
+    text-align: center; 
+    color: rgb(19, 7, 47); 
+}
+
+#img1 { 
+    display: block; 
+    margin: 15px auto; 
+    max-width: 100%; 
+    border-radius: 8px; 
+}
+
+/* شريط التنقل والأزرار */
+.navbar ul {
+    padding: 15px; 
+    margin: 0; 
+    text-align: center; 
+    list-style: none; 
+    background-color: rgb(158, 135, 180);
+}
+
+.navbar li { 
+    display: inline-block; 
+    margin: 0 10px; 
+}
+
+.navbar a {
+    color: rgb(13, 36, 52); 
+    text-decoration: none; 
+    padding: 10px 15px; 
+    font-weight: bold; 
+    border-radius: 4px; 
+    transition: 0.3s; 
+    cursor: pointer;
+}
+
+.navbar a:hover { 
+    background-color: rgba(82, 223, 101, 0.5); 
+}
+
+/* لون الزر النشط (أخضر) */
+.navbar a.active {
+    background-color: rgb(82, 223, 101);
+    color: rgb(13, 36, 52);
+}
+
+/* إدارة الأقسام (إخفاء وإظهار حسب الزر المضغوط) */
+.page-section {
+    display: none; 
     padding: 20px; 
-    margin-bottom: 20px; 
-    border-radius: 6px; 
-    border-right: 5px solid rgb(82, 223, 101); 
-    text-align: right;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 20px auto; 
+    max-width: 800px; 
+    border-radius: 8px; 
+    border: 3px solid rgb(15, 10, 85);
 }
 
-.news-date, .statement-date {
-    color: #666; 
-    font-size: 13px;
-    display: block;
-    margin-bottom: 5px;
+.page-section.active-section { 
+    display: block; 
 }
 
-/* حاوية التعليقات المتقدمة */
-.comments-wrapper {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.95);
+/* تنسيق بطاقة آخر البيانات */
+.statement-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-right: 5px solid rgb(15, 10, 85);
+    padding: 15px 20px;
+    margin: 20px 0;
     border-radius: 6px;
-    border: 1px solid rgb(15, 10, 85);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-.comments-title {
+.statement-card h3 {
     color: rgb(15, 10, 85);
     margin-top: 0;
+    margin-bottom: 8px;
     font-size: 1.2rem;
-    border-bottom: 2px solid rgb(158, 135, 180);
-    padding-bottom: 8px;
-    margin-bottom: 20px;
 }
 
-#cusdis_thread iframe {
-    width: 100% !important;
-    border: none !important;
-    min-height: 250px;
+.statement-card .date {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.statement-card p {
+    text-align: justify;
+    line-height: 1.6;
+    margin: 0;
+    color: #222;
+}
+
+/* تنسيق حاوية العناصر الجانبية والنبذة */
+.card-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-container aside, 
+.card-container .sub-sec {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 6px;
+    text-align: right;
+}
+
+/* تذييل الصفحة */
+footer { 
+    text-align: center; 
+    padding: 15px; 
+    background-color: rgb(158, 135, 180); 
+    margin-top: 30px; 
+}
+
+/* تنسيق قسم تعليقات Cusdis الخارجي أسفل البيان الرئيسي */
+.comments-section {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #fcfcfc;
+    border-radius: 6px;
+    border: 1px solid rgb(158, 135, 180);
+}
+
+.comments-section h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: rgb(15, 10, 85);
+    border-bottom: 2px solid rgb(158, 135, 180);
+    padding-bottom: 5px;
 }
