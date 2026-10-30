@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حزب الشعب السوداني</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <p>بسم الله الرحمن الرحيم</p> 
+        <h1>حزب الشعب السوداني</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a class="nav-link active" data-target="home">الرئيسية</a></li>
+            <li><a class="nav-link" data-target="party-statements">آخر البيانات للحزب</a></li>
+            <li><a class="nav-link" data-target="news">آخر الأخبار</a></li>
+            <li><a class="nav-link" data-target="economy">الاقتصاد ومعاش الناس</a></li>
+            <li><a class="nav-link" data-target="about">اقرأ عنا وانضم الينا</a></li>
+        </ul>
+    </nav>
+    
+    <img src="BR.jpeg" height="240" id="img1" alt="شعار الحزب">
+
+    <main>
+        <!-- 1. قسم الرئيسية -->
+        <section id="home" class="page-section active-section">
+            <h2>مرحباً بكم في الموقع الرسمي</h2>
+            <p>أهلاً بكم في البوابة الرسمية لحزب الشعب السوداني.</p>
+
+            <div class="statement-card">
+                <h3>📢 التزامنا الوطني</h3>
+                <p>
+                    يؤكد حزب الشعب السوداني على أولوية تحسين الأوضاع المعيشية ودعم الخدمات الأساسية لكافة المواطنين، مشدداً على ضرورة تكاتف الجهود الوطنية والمجتمعية لتجاوز التحديات الراهنة.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. قسم آخر البيانات للحزب (القسم الجديد) -->
+        <section id="party-statements" class="page-section">
+            <h2>آخر البيانات والمواقف الرسمية للترس والعمل الوطني</h2>
+            <div id="statements-container"></div>
+            
+            <!-- حاوية التعليقات الديناميكية المرتبطة بالبيان النشط -->
+            <div class="comments-wrapper" id="comments-wrapper" style="display:none;">
+                <h3 class="comments-title">💬 مناقشات الزوار حول هذا البيان</h3>
+                <div id="cusdis_thread" 
+                     data-host="https://cusdis.com"
+                     data-app-id="ضع_هنا_الـ_APP_ID_الخاص_بك"
+                     data-page-id="" 
+                     data-page-url="" 
+                     data-page-title="">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. قسم آخر الأخبار -->
+        <section id="news" class="page-section">
+            <h2>آخر الأخبار والتحديثات اليومية</h2>
+            <div id="news-container"></div>
+        </section>
+
+        <!-- 4. قسم الاقتصاد -->
+        <section id="economy" class="page-section">
+            <h2>الاقتصاد ومعاش الناس</h2>
+            <p>رؤية الحزب لحل الأزمات الاقتصادية وتخفيف الأعباء المعيشية عن كاهل المواطن.</p>
+        </section>
+
+        <!-- 5. قسم اقرأ عنا وانضم إلينا -->
+        <section id="about" class="page-section">
+            <h2>اقرأ عنا وانضم إلينا</h2>
+            <p>تعرف على برامجنا، نبذة التأسيس، وكن جزءاً من التغيير الإيجابي.</p>
+            
+            <div class="card-container">
+                <aside> 
+                    <h3>الإخلاص</h3>
+                    بسم الله الرحمن الرحيم<br>
+                    قل هو الله احد<br>
+                    الله الصمد<br>
+                    لم يلد و لم يولد<br>
+                    ولم يكن له كفوا احد
+                </aside>
+                <section class="sub-sec"> 
+                    <h3>الفلق</h3>
+                    بسم الله الرحمن الرحيم<br>
+                    قل اعوذ برب الفلق<br>
+                    من شر ما خلق
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>جميع حقوق النشر محفوظة © حزب الشعب السوداني</p>
+    </footer>
+
+    <!-- مكتبة نظام تعليقات Cusdis وترجمته للعربية -->
+    <script async defer src="https://cusdis.com"></script>
+    <script>
+      window.CUSDIS_LOCALE = {
+        "powered_by": "نظام تعليقات %s",
+        "post_comment": "إرسال التعليق",
+        "placeholder": "اكتب تعليقك هنا (الاسم والإيميل مطلوبان)...",
+        "loading": "جاري تحميل التعليقات...",
+        "name": "الاسم الكامل",
+        "email": "البريد الإلكتروني (لن ينشر)",
+        "empty_comment": "لا يمكن إرسال تعليق فارغ",
+        "reply": "رد"
+      }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

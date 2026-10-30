@@ -1,0 +1,41 @@
+/* تنسيق كروت الأخبار والبيانات الديناميكية */
+.news-card, .statement-item-card {
+    background: #ffffff; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    border-radius: 6px; 
+    border-right: 5px solid rgb(82, 223, 101); 
+    text-align: right;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.news-date, .statement-date {
+    color: #666; 
+    font-size: 13px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* حاوية التعليقات المتقدمة */
+.comments-wrapper {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 6px;
+    border: 1px solid rgb(15, 10, 85);
+}
+
+.comments-title {
+    color: rgb(15, 10, 85);
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid rgb(158, 135, 180);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+#cusdis_thread iframe {
+    width: 100% !important;
+    border: none !important;
+    min-height: 250px;
+}
