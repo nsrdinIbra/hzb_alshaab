@@ -54,17 +54,16 @@ document.addEventListener("DOMContentLoaded", function() {
         newsContainer.innerHTML = newsHTML;
     }
 
-    // === 3. سكريبت تهيئة نظام تعليقات Disqus للموقع الاستاتيكي ===
-    // التعديل الهندسي النهائي: تم تثبيت المعرّف shaab ليتطابق مع لوحة تحكم الحزب الحية
+    // === 3. محرك تهيئة Disqus المباشر والمستقر 100% ===
     window.disqus_config = function () {
-        this.page.url = window.location.href;  
-        this.page.identifier = 'statement_29_oct_2026'; 
+        this.page.url = 'https://hzbalshaab.vercel.app/'; // رابط موقعك الحي الثابت
+        this.page.identifier = 'statement_29_oct_2026'; // معرف البيان
     };
 
-    (function() { 
-        var d = document, s = d.createElement('script');
-        s.src = 'https://disqus.com'; // تم تصحيح الرابط واستبداله بـ shaab بنجاح
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    // حقن الصندوق مباشرة في حاوية الـ HTML
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = 'https://shaab.disqus.com/embed.js'; // استدعاء ملف الـ Embed لحسابك shaab
+    (document.getElementsByTagName('head') || document.getElementsByTagName('body')).appendChild(dsq);
 });
