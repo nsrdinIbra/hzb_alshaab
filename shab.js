@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // === 1. نظام الملاحة والتحكم بالأزرار الأربعة الأصلي ===
+    // === 1. نظام الملاحة والتحكم بالأزرار الأربعة ===
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // === 2. نظام مصفوفة الأخبار اليومية التلقائي ===
+    // === 2. مصفوفة الأخبار اليومية التلقائية ===
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
         const dailyNews = [
@@ -54,16 +54,17 @@ document.addEventListener("DOMContentLoaded", function() {
         newsContainer.innerHTML = newsHTML;
     }
 
-    // === 3. محرك تهيئة Disqus المباشر والمستقر 100% ===
-    window.disqus_config = function () {
-        this.page.url = 'https://hzbalshaab.vercel.app/'; // رابط موقعك الحي الثابت
-        this.page.identifier = 'statement_29_oct_2026'; // معرف البيان
-    };
+    // === 3. تحميل تعليقات Disqus في الصفحة الرئيسية ===
+    if (document.getElementById('disqus_thread')) {
+        window.disqus_config = function () {
+            this.page.url = 'https://hzbalshaab.vercel.app/'; // رابط موقعك الحي
+            this.page.identifier = 'statement_29_oct_2026'; // معرف المقال
+        };
 
-    // حقن الصندوق مباشرة في حاوية الـ HTML
-    var dsq = document.createElement('script'); 
-    dsq.type = 'text/javascript'; 
-    dsq.async = true;
-    dsq.src = 'https://shaab.disqus.com/embed.js'; // استدعاء ملف الـ Embed لحسابك shaab
-    (document.getElementsByTagName('head') || document.getElementsByTagName('body')).appendChild(dsq);
+        var dsq = document.createElement('script'); 
+        dsq.type = 'text/javascript'; 
+        dsq.async = true;
+        dsq.src = 'https://shaab.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }
 });
