@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // === 1. كود التنقل والتحكم بالأزرار الأربعة الأصلي الخاص بك ===
+    // === 1. نظام الملاحة والتحكم بالأزرار الأربعة الأصلي ===
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // === 2. نظام مصفوفة الأخبار اليومية الخاص بك ===
+    // === 2. نظام مصفوفة الأخبار اليومية التلقائي ===
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
         const dailyNews = [
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 summary: "ناقش الاجتماع أبرز التحديات المعيشية ووضع خطط مقترحة للتخفيف عن المواطنين، وسط تفاعل واسع من الأعضاء."
             },
             {
-                title: "إطلاق Mبادرة المجتمعية لدعم الخدمات الأساسية",
+                title: "إطلاق المبادرة المجتمعية لدعم الخدمات الأساسية",
                 date: "2026-10-28",
                 summary: "أعلن الحزب عن بدء سلسلة من الندوات والورش التدريبية لرفع الوعي المجتمعي والخدمي في مختلف المناطق."
             },
@@ -53,4 +53,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         newsContainer.innerHTML = newsHTML;
     }
+
+    // === 3. سكريبت تهيئة نظام تعليقات Disqus للموقع الاستاتيكي ===
+    // ملاحظة هندسية: قم بتغيير 'sudanese-people-party' للاسم القصير (Shortname) الذي تمنحه لك منصة Disqus عند التسجيل
+    var disqus_config = function () {
+        this.page.url = window.location.href;  
+        this.page.identifier = 'statement_29_oct_2026'; 
+    };
+
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://disqus.com'; // استبدل الجزء قبل .disqus.com بـ Shortname الخاص بك
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 });
