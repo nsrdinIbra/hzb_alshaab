@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. نظام التحكم بالأقسام والتنقل
+    // === 1. كود التنقل والتحكم بالأزرار الأربعة الأصلي الخاص بك ===
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+
             navLinks.forEach(item => item.classList.remove('active'));
             this.classList.add('active');
 
@@ -20,81 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // 2. نظام مصفوفة الأخبار اليومية
+    // === 2. نظام مصفوفة الأخبار اليومية الخاص بك ===
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
         const dailyNews = [
             {
                 title: "انعقاد الاجتماع الدوري لمكتب الشؤون الاقتصادية ومعاش الناس",
                 date: "2026-10-29",
-                summary: "ناقش الاجتماع أبرز التحديات المعيشية ووضع خطط مقترحة للتخفيف عن المواطنين."
+                summary: "ناقش الاجتماع أبرز التحديات المعيشية ووضع خطط مقترحة للتخفيف عن المواطنين، وسط تفاعل واسع من الأعضاء."
             },
             {
-                title: "إطلاق المبادرة المجتمعية لدعم الخدمات الأساسية",
+                title: "إطلاق Mبادرة المجتمعية لدعم الخدمات الأساسية",
                 date: "2026-10-28",
-                summary: "أعلن الحزب عن بدء سلسلة من الندوات والورش التدريبية لرفع الوعي المجتمعي."
+                summary: "أعلن الحزب عن بدء سلسلة من الندوات والورش التدريبية لرفع الوعي المجتمعي والخدمي في مختلف المناطق."
+            },
+            {
+                title: "بيان هام بشأن التطورات السياسية الراهنة",
+                date: "2026-10-27",
+                summary: "أصدر الحزب بياناً صحفياً يوضح فيه رؤيته المستقبلية للحلول السلمية والديمقراطية."
             }
         ];
 
         let newsHTML = "";
         dailyNews.forEach(news => {
             newsHTML += `
-                <div class="news-card">
-                    <span class="news-date">📅 ${news.date}</span>
-                    <h3>${news.title}</h3>
-                    <p>${news.summary}</p>
-                </div>`;
+                <div class="news-card" style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 6px; border-right: 5px solid rgb(82, 223, 101); text-align: right;">
+                    <span class="news-date" style="color: gray; font-size: 13px;">📅 ${news.date}</span>
+                    <h3 style="color: rgb(15, 10, 85); margin: 5px 0;">${news.title}</h3>
+                    <p style="color: rgb(19, 7, 47); text-align: right; margin: 0;">${news.summary}</p>
+                </div>
+            `;
         });
         newsContainer.innerHTML = newsHTML;
-    }
-
-    // 3. نظام "آخر البيانات للحزب" مع تفعيل التعليقات الديناميكية عند إضافة أي بيان جديد
-    const statementsContainer = document.getElementById('statements-container');
-    if (statementsContainer) {
-        // مصفوفة البيانات (أضف بيانك الجديد هنا في أعلى المصفوفة ليظهر تلقائياً ويعمل له صندوق تعليقات خاص به)
-        const partyStatements = [
-            {
-                id: "statement_statement_2026_10_30", // معرف فريد وحصري للتعليقات
-                title: "البيان الصحفي الأخير بشأن التنمية المستدامة والمواقف الراهنة",
-                date: "2026-10-30",
-                content: "يؤكد حزب الشعب السوداني في بيانه الأخير على أولوية تحسين الأوضاع المعيشية ودعم الخدمات الأساسية لكافة المواطنين، مشدداً على ضرورة تكاتف الجهود الوطنية والمجتمعية لتجاوز التحديات الراهنة وبناء مستقبل مستقر يضمن الكرامة والتنمية للجميع."
-            }
-        ];
-
-        let statementsHTML = "";
-        partyStatements.forEach(statement => {
-            statementsHTML += `
-                <div class="statement-item-card">
-                    <span class="statement-date">📅 تاريخ النشر: ${statement.date}</span>
-                    <h3>📢 ${statement.title}</h3>
-                    <p>${statement.content}</p>
-                </div>`;
-        });
-        statementsContainer.innerHTML = statementsHTML;
-
-        // تهيئة وحمل نظام التعليقات للبيان الأحدث بشكل تلقائي
-        if(partyStatements.length > 0) {
-            loadCommentsForStatement(partyStatements[0]);
-        }
-    }
-
-    // دالة محرك التعليقات الديناميكي لمنع مشاكل الـ Iframe والتحديث المتزامن
-    function loadCommentsForStatement(statement) {
-        const wrapper = document.getElementById('comments-wrapper');
-        const thread = document.getElementById('cusdis_thread');
-        
-        if (thread && wrapper) {
-            wrapper.style.display = 'block';
-            
-            // حقن البيانات الحصرية للبيان الجديد داخل أداة Cusdis
-            thread.setAttribute('data-page-id', statement.id);
-            thread.setAttribute('data-page-title', statement.title);
-            thread.setAttribute('data-page-url', window.location.href + "?id=" + statement.id);
-            
-            // عمل Re-render لـ Cusdis إذا كانت المكتبة محملة مسبقاً في الـ DOM
-            if (window.Cusdis && typeof window.Cusdis.render === 'function') {
-                window.Cusdis.render(thread);
-            }
-        }
     }
 });
