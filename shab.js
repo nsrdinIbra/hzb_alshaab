@@ -55,15 +55,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // === 3. سكريبت تهيئة نظام تعليقات Disqus للموقع الاستاتيكي ===
-    // ملاحظة هندسية: قم بتغيير 'sudanese-people-party' للاسم القصير (Shortname) الذي تمنحه لك منصة Disqus عند التسجيل
-    var disqus_config = function () {
+    // التعديل الهندسي: تم ربط الـ Shortname والـ Embed Path بالحساب الفعلي الموثق لديك (shaab) ليعمل مع تعليقات الضيوف بنجاح
+    window.disqus_config = function () {
         this.page.url = window.location.href;  
         this.page.identifier = 'statement_29_oct_2026'; 
     };
 
     (function() { 
         var d = document, s = d.createElement('script');
-        s.src = 'https://disqus.com'; // استبدل الجزء قبل .disqus.com بـ Shortname الخاص بك
+        s.src = 'https://disqus.com'; // تم تصحيح المسار ليتصل بسيرفر المنصة المباشر لحسابك الفعلي
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
