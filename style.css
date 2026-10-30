@@ -142,19 +142,24 @@ footer {
     margin-top: 30px; 
 }
 
-/* تنسيق قسم تعليقات Cusdis الخارجي أسفل البيان الرئيسي */
+/* 📥 هندسة حاوية تعليقات Disqus المضافة حديثاً */
 .comments-section {
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #fcfcfc;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
     border-radius: 6px;
-    border: 1px solid rgb(158, 135, 180);
+    border: 1px solid rgb(15, 10, 85);
 }
 
 .comments-section h4 {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: rgb(15, 10, 85);
     border-bottom: 2px solid rgb(158, 135, 180);
-    padding-bottom: 5px;
+    padding-bottom: 8px;
+}
+
+/* حيلة برمجية لتقليل الإعلانات الزائدة والروابط الترويجية لـ Disqus */
+#disqus_thread iframe[src*="ads-iframe"] {
+    display: none !important;
 }
