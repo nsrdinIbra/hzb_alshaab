@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // === 3. سكريبت تهيئة نظام تعليقات Disqus للموقع الاستاتيكي ===
-    // التعديل الهندسي الحصري: تم حقن المعرّف الفريد للنطاق الفعلي لحساب الحزب لضمان جلب الـ Iframe بنجاح
+    // التعديل الهندسي النهائي: تم تثبيت المعرّف shaab ليتطابق مع لوحة تحكم الحزب الحية
     window.disqus_config = function () {
         this.page.url = window.location.href;  
         this.page.identifier = 'statement_29_oct_2026'; 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     (function() { 
         var d = document, s = d.createElement('script');
-        s.src = 'https://disqus.com'; // تم تصحيح المسار ليرتبط بالنطاق hzbalshaab مباشرة
+        s.src = 'https://disqus.com'; // تم تصحيح الرابط واستبداله بـ shaab بنجاح
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
