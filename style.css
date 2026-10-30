@@ -1,3 +1,16 @@
+
+/* تحكم في حجم حاوية التعليقات وصندوق Disqus */
+.comments-section {
+    max-width: 100%; /* العرض الأقصى ليتناسب مع البطاقة */
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* تصغير عرض وارتفاع صندوق Disqus نفسه وتخفيف الفراغات الكبيرة */
+#disqus_thread iframe {
+    max-height: 500px !important; /* تحديد أقصى ارتفاع للصندوق حتى لا يكون طويلاً جداً */
+}
+
 /* إعدادات عامة */
 * { 
     box-sizing: border-box; 
