@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حزب الشعب السوداني</title>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +25,7 @@
     <img src="BR.jpeg" height="240" id="img1" alt="شعار الحزب">
 
     <main>
-        <!-- 1. قسم الرئيسية (يحتوي على الترحيب وآخر البيانات مع صندوق التعليقات) -->
+        <!-- 1. قسم الرئيسية (يحتوي على الترحيب وآخر البيانات وصندوق Disqus) -->
         <section id="home" class="page-section active-section">
             <h2>مرحباً بكم في الموقع الرسمي</h2>
             <p>أهلاً بكم في البوابة الرسمية لحزب الشعب السوداني.</p>
@@ -38,21 +37,15 @@
                     يؤكد حزب الشعب السوداني في بيانه الصحفي الأخير على أولوية تحسين الأوضاع المعيشية ودعم الخدمات الأساسية لكافة المواطنين، مشدداً على ضرورة تكاتف الجهود الوطنية والمجتمعية لتجاوز التحديات الراهنة وبناء مستقبل مستقر يضمن الكرامة والتنمية للجميع.
                 </p>
 
-                <!-- صندوق تعليقات مدمج هندسياً بدون التأثير على الأزرار -->
+                <!-- حاوية تعليقات Disqus المستقرة -->
                 <div class="comments-section">
-                    <h4>💬 آراء وتعليقات الزوار حول البيان</h4>
-                    <div id="cusdis_thread"
-                      data-host="https://cusdis.com"
-                      data-app-id="ضع_هنا_الـ_APP_ID_الخاص_بك"
-                      data-page-id="statement_29_oct_2026"
-                      data-page-url="https://yourwebsite.com"
-                      data-page-title="بيان حزب الشعب السوداني - 29 أكتوبر">
-                    </div>
+                    <h4>💬 آراء وتعليقات عامة الشعب حول البيان</h4>
+                    <div id="disqus_thread"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. قسم آخر الأخبار (الديناميكي المخصص لك) -->
+        <!-- 2. قسم آخر الأخبار -->
         <section id="news" class="page-section">
             <h2>آخر الأخبار والتحديثات اليومية</h2>
             <div id="news-container"></div>
@@ -92,20 +85,7 @@
         <p>جميع حقوق النشر محفوظة © حزب الشعب السوداني</p>
     </footer>
 
-    <!-- سكريبت تشغيل نظام تعليقات Cusdis وترجمته للعربية -->
-    <script async defer src="https://cusdis.com"></script>
-    <script>
-      window.CUSDIS_LOCALE = {
-        "powered_by": "نظام تعليقات %s",
-        "post_comment": "إرسال التعليق",
-        "placeholder": "اكتب تعليقك ورأيك هنا...",
-        "loading": "جاري تحميل التعليقات...",
-        "name": "الاسم الكامل",
-        "email": "البريد الإلكتروني (لن ينشر علناً)",
-        "empty_comment": "تنبيه: لا يمكن إرسال تعليق فارغ",
-        "reply": "رد"
-      }
-    </script>
+    <!-- ربط ملف جافا سكريبت بالاسم المخصص وضعه أسفل الملف هندسياً -->
     <script src="shab.js"></script>
 </body>
 </html>
