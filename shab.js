@@ -72,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => console.error("خطأ في جلب بيان الرئيسية:", error));
     }
 
-    // === 3. جلب وعرض آخر الأخبار (lastnews.json) ===
+    // === 3. جلب وعرض آخر الأخبار (ln.json) ===
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
-        fetch('lastnews.json')
+        fetch('ln.json')
             .then(response => response.json())
             .then(data => {
                 let newsHTML = "";
@@ -149,25 +149,4 @@ document.addEventListener("DOMContentLoaded", function() {
         container.appendChild(threadElement);
 
         if (window.DISQUS) {
-            window.DISQUS.reset({
-                reload: true,
-                config: function () {
-                    this.page.url = window.location.href;
-                    this.page.identifier = identifier;
-                }
-            });
-        } else {
-            window.disqus_config = function () {
-                this.page.url = window.location.href;
-                this.page.identifier = identifier;
-            };
-
-            var dsq = document.createElement('script'); 
-            dsq.id = 'dsq-embed-script';
-            dsq.type = 'text/javascript'; 
-            dsq.async = true;
-            dsq.src = 'https://shaab.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }
-    }
-});
+            window.DISQUS.
