@@ -139,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        // التحقق من وجود عنصر disqus_thread وإنشائه إن لم يكن موجوداً
         let threadElement = document.getElementById('disqus_thread');
         if (!threadElement) {
             threadElement = document.createElement('div');
@@ -149,4 +148,25 @@ document.addEventListener("DOMContentLoaded", function() {
         container.appendChild(threadElement);
 
         if (window.DISQUS) {
-            window.DISQUS.
+            window.DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.url = window.location.href;
+                    this.page.identifier = identifier;
+                }
+            });
+        } else {
+            window.disqus_config = function () {
+                this.page.url = window.location.href;
+                this.page.identifier = identifier;
+            };
+
+            var dsq = document.createElement('script'); 
+            dsq.id = 'dsq-embed-script';
+            dsq.type = 'text/javascript'; 
+            dsq.async = true;
+            dsq.src = 'https://shaab.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }
+    }
+});
