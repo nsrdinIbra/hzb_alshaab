@@ -18,14 +18,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 targetSection.classList.add('active-section');
             }
 
-            // تحديث تعليقات Disqus بناءً على القسم النشط حالياً
-            let pageIdentifier = 'home_page'; // المعرف الافتراضي
-            if (targetId === 'home') pageIdentifier = 'statement_06_nov_2026';
-            else if (targetId === 'news') pageIdentifier = 'news_section_kanabi';
-            else if (targetId === 'economy') pageIdentifier = 'economy_maash_nas';
-            else if (targetId === 'about') pageIdentifier = 'about_us_page';
-
-            reloadDisqus(pageIdentifier);
+            // تفعيل التعليقات في "الرئيسية" و "الاقتصاد ومعاش الناس" فقط
+            if (targetId === 'home') {
+                ensureCommentBox('home', 'statement_06_nov_2026');
+            } else if (targetId === 'economy') {
+                ensureCommentBox('economy', 'economy_maash_nas');
+            }
         });
     });
 
@@ -86,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>` : ''}
                         </div>
 
-                        <!-- حاوية تعليقات Disqus عامة في الرئيسية -->
+                        <!-- حاوية تعليقات الصفحة الرئيسية -->
                         <div class="comments-section" style="margin-top: 30px;">
                             <h4>💬 آراء وتعليقات عامة الشعب حول البيان</h4>
                             <div id="disqus_thread"></div>
@@ -129,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => console.error("خطأ في جلب الأخبار:", error));
     }
 
-    // === 4. جلب وعرض قسم الاقتصاد ومعاش الناس (pl.json) ===
+    // === 4. جلب وعرض قسم الاقتصاد ومعاش الناس (pl.json) مع التعليقات ===
     const economyContainer = document.getElementById('economy-container');
     if (economyContainer) {
         fetch('pl.json')
@@ -172,33 +170,47 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <img src="${data.image}" alt="صورة حملة معاش الناس" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                             </div>` : ''}
                         </div>
+
+                        <!-- حاوية تعليقات قسم الاقتصاد ومعاش الناس -->
+                        <div class="comments-section" style="margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>💬 آراء وتعليقات الزوار حول حملة معاش الناس</h4>
+                            <div id="economy_disqus_thread"></div>
+                        </div>
                     </div>
                 `;
             })
             .catch(error => console.error("خطأ في جلب بيانات الاقتصاد:", error));
     }
 
-    // === دالة لإعادة تحميل وتحديث تعليقات Disqus لأي صفحة أو زر ===
-    function reloadDisqus(identifier) {
-        // التحقق مما إذا كان عنصر disqus_thread موجوداً في الصفحة النشطة حالياً
-        let disqusContainer = document.getElementById('disqus_thread');
-        
-        if (!disqusContainer) {
-            // إذا لم يكن موجوداً في القسم الحالي، يمكنك إضافته برمجياً في آخر القسم النشط حالياً
-            const activeSec = document.querySelector('.page-section.active-section');
-            if (activeSec) {
-                let commentBox = activeSec.querySelector('.dynamic-comments');
-                if (!commentBox) {
-                    commentBox = document.createElement('div');
-                    commentBox.className = 'dynamic-comments';
-                    commentBox.style.marginTop = "30px";
-                    commentBox.innerHTML = `<h4>💬 تعليقات الزوار</h4><div id="disqus_thread"></div>`;
-                    activeSec.appendChild(commentBox);
-                }
+    // === دوال مساعدة لإدارة وتشغيل تعليقات Disqus ===
+    function ensureCommentBox(sectionType, identifier) {
+        setTimeout(() => {
+            let targetThreadId = (sectionType === 'economy') ? 'economy_disqus_thread' : 'disqus_thread';
+            let threadElement = document.getElementById(targetThreadId);
+
+            if (threadElement) {
+                reloadDisqus(identifier, targetThreadId);
             }
+        }, 100);
+    }
+
+    function reloadDisqus(identifier, elementId) {
+        // التأكد من نقل عنصر disqus_thread إلى الحاوية النشطة المطلوبة
+        let threadContainer = document.getElementById(elementId);
+        if (!threadContainer) return;
+
+        // تنظيف العنصر الحالي إن وجد بداخله شيئ
+        let activeThread = document.getElementById('disqus_thread');
+        if (activeThread && activeThread !== threadContainer) {
+            activeThread.remove();
         }
 
-        // تحديث إعدادات وتشغيل Disqus
+        if (!document.getElementById('disqus_thread')) {
+            let newThread = document.createElement('div');
+            newThread.id = 'disqus_thread';
+            threadContainer.appendChild(newThread);
+        }
+
         if (window.DISQUS) {
             window.DISQUS.reset({
                 reload: true,
