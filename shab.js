@@ -17,6 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
             if (targetSection) {
                 targetSection.classList.add('active-section');
             }
+
+            // تحديث تعليقات Disqus بناءً على القسم النشط حالياً
+            let pageIdentifier = 'home_page'; // المعرف الافتراضي
+            if (targetId === 'home') pageIdentifier = 'statement_06_nov_2026';
+            else if (targetId === 'news') pageIdentifier = 'news_section_kanabi';
+            else if (targetId === 'economy') pageIdentifier = 'economy_maash_nas';
+            else if (targetId === 'about') pageIdentifier = 'about_us_page';
+
+            reloadDisqus(pageIdentifier);
         });
     });
 
@@ -48,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <h3>📢 ${data.title}</h3>
                         
                         <div class="date">
-                            📅 تاريخ النشر: ${data.date} | 💬 
-                            <a href="#disqus_thread" data-disqus-identifier="${data.disqus_id}" style="color: #555; text-decoration: none; font-weight: bold;">جاري تحميل التعليقات...</a>
+                            📅 تاريخ النشر: ${data.date}
                         </div>
                         
                         <div class="statement-content">
@@ -78,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>` : ''}
                         </div>
 
-                        <!-- حاوية تعليقات Disqus -->
+                        <!-- حاوية تعليقات Disqus عامة في الرئيسية -->
                         <div class="comments-section" style="margin-top: 30px;">
                             <h4>💬 آراء وتعليقات عامة الشعب حول البيان</h4>
                             <div id="disqus_thread"></div>
@@ -86,8 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     </article>
                 `;
 
-                // تحميل تعليقات Disqus بعد عرض الكود في الصفحة
-                loadDisqus(data.disqus_id);
+                // تحميل التعليقات للرئيسية عند فتح الموقع لأول مرة
+                reloadDisqus('statement_06_nov_2026');
             })
             .catch(error => console.error("خطأ في جلب بيان الرئيسية:", error));
     }
@@ -170,17 +178,40 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => console.error("خطأ في جلب بيانات الاقتصاد:", error));
     }
 
-    // === دالة تشغيل تعليقات Disqus ديناميكياً ===
-    function loadDisqus(identifier) {
-        if (document.getElementById('disqus_thread')) {
-            window.disqus_config = function () {
-                this.page.url = 'https://hzbalshaab.vercel.app/'; 
-                this.page.identifier = identifier; 
-            };
+    // === دالة لإعادة تحميل وتحديث تعليقات Disqus لأي صفحة أو زر ===
+    function reloadDisqus(identifier) {
+        // التحقق مما إذا كان عنصر disqus_thread موجوداً في الصفحة النشطة حالياً
+        let disqusContainer = document.getElementById('disqus_thread');
+        
+        if (!disqusContainer) {
+            // إذا لم يكن موجوداً في القسم الحالي، يمكنك إضافته برمجياً في آخر القسم النشط حالياً
+            const activeSec = document.querySelector('.page-section.active-section');
+            if (activeSec) {
+                let commentBox = activeSec.querySelector('.dynamic-comments');
+                if (!commentBox) {
+                    commentBox = document.createElement('div');
+                    commentBox.className = 'dynamic-comments';
+                    commentBox.style.marginTop = "30px";
+                    commentBox.innerHTML = `<h4>💬 تعليقات الزوار</h4><div id="disqus_thread"></div>`;
+                    activeSec.appendChild(commentBox);
+                }
+            }
+        }
 
-            // إزالة السكريبت القديم إن وجد لتفادي التداخل
-            const existingScript = document.getElementById('dsq-embed-script');
-            if (existingScript) existingScript.remove();
+        // تحديث إعدادات وتشغيل Disqus
+        if (window.DISQUS) {
+            window.DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.url = window.location.href;
+                    this.page.identifier = identifier;
+                }
+            });
+        } else {
+            window.disqus_config = function () {
+                this.page.url = window.location.href;
+                this.page.identifier = identifier;
+            };
 
             var dsq = document.createElement('script'); 
             dsq.id = 'dsq-embed-script';
