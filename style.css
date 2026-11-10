@@ -35,7 +35,7 @@ p {
     border-radius: 8px; 
 }
 
-/* شريط التنقل والأزرار والقوائم المنسدلة */
+/* شريط التنقل والأزرار */
 .navbar {
     background-color: rgb(158, 135, 180);
     text-align: center;
@@ -51,7 +51,7 @@ p {
 .navbar li { 
     display: inline-block; 
     margin: 0 10px; 
-    position: relative; /* مهم لتموضع القائمة المنسدلة تحته */
+    position: relative; /* مهم لتموضع القائمة المنسدلة بدقة */
 }
 
 .navbar a {
@@ -75,9 +75,16 @@ p {
     color: rgb(13, 36, 52);
 }
 
-/* تنسيق القائمة المنسدلة (Dropdown) */
+/* ==========================================
+   تنسيق القوائم المنسدلة (تنسدل عند وضع المؤشر)
+   ========================================== */
+.navbar .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
 .dropdown-menu {
-    display: none;
+    display: none; /* مخفية افتراضياً */
     position: absolute;
     top: 100%;
     right: 0;
@@ -103,15 +110,15 @@ p {
     border-radius: 0;
     background: transparent !important;
     text-align: right;
+    display: block;
 }
 
 .dropdown-menu li a:hover {
     background-color: rgba(82, 223, 101, 0.4) !important;
 }
 
-/* إظهار القائمة عند التمرير بالماوس أو التفعيل بالضغط */
-.dropdown:hover .dropdown-menu,
-.dropdown.active .dropdown-menu {
+/* إظهار القائمة فوراً عند وضع الماوس (Hover) */
+.navbar .dropdown:hover .dropdown-menu {
     display: block;
 }
 
