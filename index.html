@@ -25,14 +25,14 @@
         <h1>حزب الشعب السوداني</h1>
     </header>
 
-    <!-- شريط الملاحة والقوائم المنسدلة -->
+    <!-- شريط التنقل والقوائم المنسدلة المحدثة -->
     <nav class="navbar">
         <ul>
             <li><a class="nav-link active" data-target="home">الرئيسية</a></li>
 
             <!-- الزر الأول: آخر الأخبار -->
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle" data-target="news">آخر الأخبار ▾</a>
+                <a class="nav-link dropdown-toggle">آخر الأخبار ▾</a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" data-target="news">آخر الأخبار</a></li>
                     <li><a class="nav-link" data-target="regional-news">أخبار الأقاليم</a></li>
@@ -40,9 +40,9 @@
                 </ul>
             </li>
 
-            <!-- الزر الثاني: الشعب والمجتمع (تم حذف اقرأ، وتعديل اسم الخيار الثاني) -->
+            <!-- الزر الثاني: الشعب والمجتمع -->
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle" data-target="society">الشعب والمجتمع ▾</a>
+                <a class="nav-link dropdown-toggle">الشعب والمجتمع ▾</a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" data-target="economy">معاش الناس</a></li>
                     <li><a class="nav-link" data-target="state-challenges">تحديات وقضايا الشعب بالولايات</a></li>
@@ -51,7 +51,7 @@
 
             <!-- الزر الثالث: اقرأ وانضم إلينا -->
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle" data-target="about">اقرأ وانضم إلينا ▾</a>
+                <a class="nav-link dropdown-toggle">اقرأ وانضم إلينا ▾</a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" data-target="basic-papers">الأوراق الأساسية</a></li>
                     <li><a class="nav-link" data-target="important-papers">أوراق مهمة</a></li>
@@ -77,31 +77,59 @@
             <div id="news-container"></div>
         </section>
 
-        <!-- 3. قسم الاقتصاد ومعاش الناس -->
+        <!-- 3. قسم أخبار الأقاليم (يمكنك ملء محتواه لاحقاً) -->
+        <section id="regional-news" class="page-section">
+            <h2>أخبار الأقاليم</h2>
+            <p>تابع آخر مستجدات وأخبار الأقاليم المختلفة في السودان.</p>
+        </section>
+
+        <!-- 4. قسم المقالات -->
+        <section id="articles" class="page-section">
+            <h2>المقالات والتحليلات السياسية</h2>
+            <p>مجموعة من المقالات الفكرية والتحليلات الصادرة عن الحزب.</p>
+        </section>
+
+        <!-- 5. قسم الاقتصاد ومعاش الناس -->
         <section id="economy" class="page-section">
             <h2>الاقتصاد ومعاش الناس</h2>
             <div id="economy-container"></div>
         </section>
 
-        <!-- 4. قسم اقرأ عنا وانضم إلينا -->
-        <section id="about" class="page-section">
-            <h2>اقرأ عنا وانضم إلينا</h2>
-            <p>تعرف على رؤية الحزب وادعم مسيرة التغيير الإيجابي.</p>
+        <!-- 6. قسم تحديات وقضايا الشعب بالولايات -->
+        <section id="state-challenges" class="page-section">
+            <h2>تحديات وقضايا الشعب بالولايات</h2>
+            <p>رصد ومتابعة لأبرز التحديات المعيشية والخدمية التي تواجه المواطنين في ولايات السودان المختلفة.</p>
+        </section>
+
+        <!-- 7. قسم الأوراق الأساسية -->
+        <section id="basic-papers" class="page-section">
+            <h2>الأوراق الأساسية للحزب</h2>
+            <p>الوثائق والميثاق الأساسي الذي يقوم عليه تنظيم حزب الشعب السوداني.</p>
+        </section>
+
+        <!-- 8. قسم أوراق مهمة -->
+        <section id="important-papers" class="page-section">
+            <h2>أوراق مهمة</h2>
+            <p>دراسات وأوراق سياسية وفكرية تفصيلية.</p>
+        </section>
+
+        <!-- 9. قسم انضم إلينا (المحدث مع رابط الاستمارة) -->
+        <section id="join-us" class="page-section">
+            <h2>انضم إلى صفوف الحزب وكن جزءاً من التغيير</h2>
+            <p>تعرف على رؤية الحزب وادعم مسيرة التغيير الإيجابي بالمشاركة الفعالة معنا.</p>
             
-            <div class="about-container" style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-top: 20px;">
-                <h3 style="color: #1a252f; margin-top: 0; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">عن حزب الشعب السوداني</h3>
+            <div class="about-container" style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-top: 20px; text-align: center;">
+                <h3 style="color: #1a252f; margin-top: 0; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">استمارة العضوية والانضمام</h3>
                 
-                <p style="font-size: 1.1rem; line-height: 2; color: #333; margin-top: 20px;">
-                    حزب الشعب تنظيم وطني ثوري وحدوي، يواجه الاستعمار القديم والجديد ، ويقوم على مبادئ الوحدة والسيادة والعدالة ، ويسعى لأقرار السلام وتمكين السودانيين من حكم أنفسهم ، يرفض حزبنا توجهات تفكيك البلاد وعسكرة السياسة وحكم المليشيات ، ويدافع عن الحريات العامة، ويحارب الفساد المؤسسي.
+                <p style="font-size: 1.1rem; line-height: 2; color: #333; margin: 20px 0;">
+                    حزب الشعب تنظيم وطني ثوري وحدوي، يواجه الاستعمار القديم والجديد، ويقوم على مبادئ الوحدة والسيادة والعدالة. انضم إلينا اليوم وساهم معنا في بناء السودان.
                 </p>
 
-                <div style="margin-top: 40px; padding-top: 25px; border-top: 1px dashed #ccc; text-align: center;">
-                    <h4 style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">انضم إلى صفوف الحزب وكن جزءاً من التغيير</h4>
-                    
+                <div style="margin-top: 30px; padding-top: 20px;">
                     <a href="https://docs.google.com/forms/d/1R0dqubvx8TBaYkp_indxICtlXePW7N-MiG7InPHxGhs/viewform?hl=ar&hl=ar&edit_requested=true" 
                        target="_blank" 
-                       style="display: inline-block; background-color: #27ae60; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; border-radius: 6px; box-shadow: 0 3px 6px rgba(0,0,0,0.16); transition: background-color 0.3s;">
-                        📝 اضغط هنا للإنضمام إلى الحزب
+                       style="display: inline-block; background-color: #27ae60; color: white; padding: 14px 35px; text-decoration: none; font-weight: bold; font-size: 1.15rem; border-radius: 6px; box-shadow: 0 3px 6px rgba(0,0,0,0.16); transition: background-color 0.3s;">
+                        📝 اضغط هنا للإنضمام إلى الحزب (استمارة التسجيل)
                     </a>
                 </div>
             </div>
