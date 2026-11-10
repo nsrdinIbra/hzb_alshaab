@@ -25,12 +25,40 @@
         <h1>حزب الشعب السوداني</h1>
     </header>
 
+    <!-- شريط الملاحة المحدث والقوائم المنسدلة -->
     <nav class="navbar">
-        <ul>
+        <ul class="nav-menu">
             <li><a class="nav-link active" data-target="home">الرئيسية</a></li>
-            <li><a class="nav-link" data-target="news">آخر الأخبار</a></li>
-            <li><a class="nav-link" data-target="economy">الاقتصاد ومعاش الناس</a></li>
-            <li><a class="nav-link" data-target="about">اقرأ عنا وانضم الينا</a></li>
+
+            <!-- الزر الأول: آخر الأخبار -->
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" data-target="news">آخر الأخبار ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" data-target="statements">البيانات</a></li>
+                    <li><a class="nav-link" data-target="regional-news">أخبار الأقاليم</a></li>
+                    <li><a class="nav-link" data-target="articles">المقالات</a></li>
+                </ul>
+            </li>
+
+            <!-- الزر الثاني: الشعب والمجتمع -->
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" data-target="society">الشعب والمجتمع ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" data-target="economy">معاش الناس</a></li>
+                    <li><a class="nav-link" data-target="community-challenges">التحديات والحلول المجتمعية</a></li>
+                    <li><a class="nav-link" data-target="read">اقرأ</a></li>
+                </ul>
+            </li>
+
+            <!-- الزر الثالث: اقرأ وانضم إلينا -->
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" data-target="about">اقرأ وانضم إلينا ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" data-target="basic-papers">الأوراق الأساسية</a></li>
+                    <li><a class="nav-link" data-target="important-papers">أوراق مهمة</a></li>
+                    <li><a class="nav-link" data-target="join-us">انضم إلينا</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     
@@ -56,7 +84,7 @@
             <div id="economy-container"></div>
         </section>
 
-        <!-- 4. قسم اقرأ عنا وانضم إلينا (المحدث) -->
+        <!-- 4. قسم اقرأ عنا وانضم إلينا -->
         <section id="about" class="page-section">
             <h2>اقرأ عنا وانضم إلينا</h2>
             <p>تعرف على رؤية الحزب وادعم مسيرة التغيير الإيجابي.</p>
@@ -68,14 +96,13 @@
                     حزب الشعب تنظيم وطني ثوري وحدوي، يواجه الاستعمار القديم والجديد ، ويقوم على مبادئ الوحدة والسيادة والعدالة ، ويسعى لأقرار السلام وتمكين السودانيين من حكم أنفسهم ، يرفض حزبنا توجهات تفكيك البلاد وعسكرة السياسة وحكم المليشيات ، ويدافع عن الحريات العامة، ويحارب الفساد المؤسسي.
                 </p>
 
-                <!-- مسافة فاصلة بين النص ورابط الانضمام -->
                 <div style="margin-top: 40px; padding-top: 25px; border-top: 1px dashed #ccc; text-align: center;">
                     <h4 style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">انضم إلى صفوف الحزب وكن جزءاً من التغيير</h4>
                     
                     <a href="https://docs.google.com/forms/d/1R0dqubvx8TBaYkp_indxICtlXePW7N-MiG7InPHxGhs/viewform?hl=ar&hl=ar&edit_requested=true" 
                        target="_blank" 
                        style="display: inline-block; background-color: #27ae60; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; border-radius: 6px; box-shadow: 0 3px 6px rgba(0,0,0,0.16); transition: background-color 0.3s;">
-                       📝 اضغط هنا للإنضمام إلى الحزب
+                        📝 اضغط هنا للإنضمام إلى الحزب
                     </a>
                 </div>
             </div>
