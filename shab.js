@@ -8,7 +8,7 @@ function initNavigation() {
     const sections = document.querySelectorAll(".page-section");
     const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
-    // فتح وإغلاق القوائم المنسدلة عند النقر (مهم للهواتف)
+    // فتح وإغلاق القوائم المنسدلة عند النقر
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener("click", (e) => {
             e.preventDefault();
@@ -67,7 +67,6 @@ function loadSiteData() {
 
             renderPosts(partyNewsAndArticles, "news-container");
             renderPosts(data.regional_news, "regional-news-container");
-            renderPosts(data.state_challenges, "state-challenges-container");
             renderPosts(data.basic_papers, "basic-papers-container");
             renderPosts(data.important_papers, "important-papers-container");
             renderCampaigns(data.economy, "economy-container");
